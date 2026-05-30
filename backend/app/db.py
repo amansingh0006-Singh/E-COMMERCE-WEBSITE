@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = "sqlite:///./ecom.db"
 
@@ -16,16 +17,14 @@ SessionLocal = sessionmaker(
 
 Base = declarative_base()
 
-# ✅ YAHI FUNCTION MISSING THA
-def get_db():
+
+# Database Session
+def get_db():      
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
-
-
 
 
 
